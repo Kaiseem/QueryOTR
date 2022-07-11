@@ -1,2 +1,12 @@
 # QueryOTR
-[ECCV2022] Official PyTorch implementation of the paper Outpainting by Queries
+
+## Outpainting by Queries, ECCV 2022.
+
+we propose a novel hybrid vision-transformer-based encoder-decoder framework, named Query Outpainting TRansformer (QueryOTR), for extrapolating visual context all-side around a given image. Patch-wise mode's global modeling capacity allows us to extrapolate images from the attention mechanism's query standpoint. A novel Query Expansion Module (QEM) is designed to integrate information from the predicted queries based on the encoder's output, hence accelerating the convergence of the pure transformer even with a relatively small dataset. To further enhance connectivity between each patch, the proposed Patch Smoothing Module (PSM) re-allocates and averages the overlapped regions, thus providing seamless predicted images. We experimentally show that QueryOTR could generate visually appealing results smoothly and realistically against the state-of-the-art image outpainting approaches.
+
+## 1. Requirements
+Coming soon.... in two or three days.....
+
+
+
+
