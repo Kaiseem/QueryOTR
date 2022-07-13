@@ -1,15 +1,15 @@
 import os
 from einops import rearrange
-os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 import matplotlib.pyplot as plt
+os.environ['KMP_DUPLICATE_LIB_OK'] = 'True'
 from torch.utils.data import Dataset
-import torch
 from models.VITGen import TransGen
-import numpy as np
 from datasets import ImageDataset
 import argparse
-import torch_fidelity
-
+from util.inception import inception_score
+import numpy as np
+from PIL import Image
+import torch
 parser = argparse.ArgumentParser()
 parser.add_argument('--eval', default=True, type=bool)
 parser.add_argument('--batch_size', type=int, default=64)
@@ -65,12 +65,16 @@ if __name__=='__main__':
                 plt.imsave(os.path.join(gtdir, f'{name[i]}.png'), denorm_img(gt[i:i + 1]), vmin=0, vmax=1)
                 plt.imsave(os.path.join(generatedir, f'{name[i]}.png'), denorm_img(fake[i:i + 1]), vmin=0, vmax=1)
 
-    metrics_dict = torch_fidelity.calculate_metrics(
-        input1=generatedir,
-        input2=gtdir,
-        cuda=True,
-        isc=True,
-        fid=True,
-        kid=False,
-        verbose=True,
-    )
+    # FID socre https://github.com/mseitzer/pytorch-fid
+    # inception score https://github.com/sbarratt/inception-score-pytorch
+    os.system(f'python -m pytorch_fid {gtdir} {generatedir}')
+    imgs = []
+    for f in os.listdir(generatedir):
+        im = np.array(Image.open(os.path.join(generatedir, f))).transpose(2, 0, 1).astype(np.float32)[:3]
+        im /= 255
+        im = im * 2 - 1
+        imgs.append(im)
+    imgs = np.stack(imgs, 0)
+    imgs = torch.from_numpy(imgs).cuda()
+    iscore = inception_score(imgs, cuda=True, batch_size=32, resize=True, splits=1)[0]
+    print('IS score', iscore)

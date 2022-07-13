@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from .ops import get_sinusoid_encoding_table, CorssAttnBlock
-from .VIT import vit_base_patch16
+from .VIT import *
 from .QEM import QueryExpansionModule
 from .PSM import PatchSmoothingModule
 
@@ -27,7 +27,9 @@ class TransGen(nn.Module):
         self.apply(self._init_weights)
 
         # initialize the weight of encoder using pretrain checkpoint
-        self.transformer_encoder = vit_base_patch16(pretrained=True, img_size=224,init_ckpt=enc_ckpt_path)
+
+        self.transformer_encoder = vit_base_patch16(pretrain=True,  init_ckpt=enc_ckpt_path, img_size=self.input_size)
+
         self.enc_image_size=224
 
         # initialize the weight of encoder using pretrain checkpoint
@@ -72,7 +74,7 @@ class TransGen(nn.Module):
 
         gt_inner = samples['gt_inner']
 
-        src = self.encoder_forward(x)
+        src = self.transformer_encoder.forward_features(x)#self.encoder_forward(x)
 
         query_embed=self.qem(src)
 

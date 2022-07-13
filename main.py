@@ -27,7 +27,7 @@ parser.add_argument('--half_precision', default=False, type=bool)
 
 parser.add_argument('--input_size', type=int, default=128)
 parser.add_argument('--output_size', type=int, default=192)
-parser.add_argument('--enc_ckpt_path', type=str, default='pretrain_mae_vit_base_mask_0.75_400e.pth')
+parser.add_argument('--enc_ckpt_path', type=str, default='mae_pretrain_vit_base.pth')
 parser.add_argument('--dec_depth', type=int, default=4)
 
 parser.add_argument('--data_root', type=str, default='E:/data3/train')
@@ -52,8 +52,7 @@ if __name__ == '__main__':
     cnn_dis = MsImageDis().cuda()
 
     g_param_dicts = [
-        {"params": [p for n, p in gen.named_parameters() if
-                    'conv_offset_mask' not in n and not 'transformer_encoder' in n], "lr_scale": 1},
+        {"params": [p for n, p in gen.named_parameters() if 'conv_offset_mask' not in n and not 'transformer_encoder' in n], "lr_scale": 1},
         {"params": [p for n, p in gen.named_parameters() if 'conv_offset_mask' in n], "lr_scale": 0.1},
         {"params": [p for n, p in gen.named_parameters() if 'transformer_encoder' in n], "lr_scale": 1}
     ]
