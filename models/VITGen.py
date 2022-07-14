@@ -54,19 +54,6 @@ class TransGen(nn.Module):
             nn.init.constant_(m.bias, 0)
             nn.init.constant_(m.weight, 1.0)
 
-    def encoder_forward(self, input):
-        b,c,w,h=input.size()
-        assert w==self.input_size and h==self.input_size
-        pad_for_enc=(self.enc_image_size-self.input_size)//2
-
-        pad_input=F.pad(input, (pad_for_enc, pad_for_enc, pad_for_enc, pad_for_enc), mode='reflect')
-
-        pad_mask = torch.ones(size=(self.enc_image_size//self.patch_size, self.enc_image_size//self.patch_size)).long()
-        pad_mask[pad_for_enc//self.patch_size:-pad_for_enc//self.patch_size, pad_for_enc//self.patch_size:-pad_for_enc//self.patch_size] = 0
-        pad_mask = pad_mask.view(-1).expand(b, -1).contiguous().bool()
-
-        return self.transformer_encoder.forward_features(pad_input, pad_mask)
-
     def forward(self, samples):
         if type(samples) is not dict:
             samples={'input':samples, 'gt_inner':F.pad(samples,(32,32,32,32))}
