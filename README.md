@@ -13,7 +13,7 @@ torchvision;
 ## 2. Data preparation
 
 ### Scenery
-Scenery consists of about 6,000 images, and we randomly select 1,000 images for evaluation. The training and test dataset can be down here (will update very soon)
+Scenery consists of about 6,000 images, and we randomly select 1,000 images for evaluation. The training and test dataset can be down [here](https://github.com/z-x-yang/NS-Outpainting)
 
 ### WikiArt
 The WikiArt datasets can be downloaded [here](https://github.com/cs-chan/ArtGAN/tree/master/WikiArt%20Dataset). We perform a split manner of genres datasets, which contains 45,503 training images and 19,492 testing images
