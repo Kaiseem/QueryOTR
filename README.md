@@ -26,12 +26,12 @@ Before you reimplement our results, you need to download the ViT pretrain checkp
 
 Training on your datasets, run:
 ```
-CUDA_VISIBLE_DEVICES=<GPUs> python main.py --name=EXPERIMENT_NAME --data_root=YOUR_PATH --patch_mean=YOUR_PATCH_MEAN --patch_std=YOUR_PATCH_STD
+CUDA_VISIBLE_DEVICES=<GPUs> python main.py --name=EXPERIMENT_NAME --data_root=YOUR_TRAIN_PATH --patch_mean=YOUR_PATCH_MEAN --patch_std=YOUR_PATCH_STD
 ```
 
 Evaluate on your datasets, run:
 ```
-CUDA_VISIBLE_DEVICES=<GPUs> python evaluate.py --r=EXPERIMENT_NAME --data_root=YOUR_PATH --patch_mean=YOUR_PATCH_MEAN --patch_std=YOUR_PATCH_STD
+CUDA_VISIBLE_DEVICES=<GPUs> python evaluate.py --r=EXPERIMENT_NAME --data_root=YOUR_TEST_PATH --patch_mean=YOUR_PATCH_MEAN --patch_std=YOUR_PATCH_STD
 ```
 
 
