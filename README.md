@@ -50,7 +50,7 @@ Our codes are built upon [MAE](https://github.com/facebookresearch/mae), [pytroc
 ```
 @inproceedings{yao2022qotr,
   title={Outpainting by Queries},
-  author={Yao, Kai and Gao, Penglei and Yang, Xi and Huang, Kaizhu and Sun, Jie and Zhang, Rui},
+  author={Yao, Kai and Gao, Penglei and Yang, Xi and Sun, Jie and Zhang, Rui and Huang, Kaizhu},
   booktitle={Proceedings of the European Conference on Computer Vision (ECCV)},    
   year={2022}
 }
