@@ -45,7 +45,7 @@ CUDA_VISIBLE_DEVICES=<GPUs> python evaluate.py --r=EXPERIMENT_NAME --data_root=Y
 
 Our codes are built upon [MAE](https://github.com/facebookresearch/mae), [pytroch-fid](https://github.com/mseitzer/pytorch-fid) and [inception score](https://github.com/sbarratt/inception-score-pytorch)
 
-## Reference
+## Citation
 
 ```
 @inproceedings{yao2022qotr,
