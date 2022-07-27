@@ -19,6 +19,9 @@ torchvision;
 ### Scenery
 Scenery consists of about 6,000 images, and we randomly select 1,000 images for evaluation. The training and test dataset can be down [here](https://github.com/z-x-yang/NS-Outpainting)
 
+### Building
+Building contains about 16,000 images in the training set and 1,500 images in the testing set, which can be found in [here](https://github.com/PengleiGao/UTransformer)
+
 ### WikiArt
 The WikiArt datasets can be downloaded [here](https://github.com/cs-chan/ArtGAN/tree/master/WikiArt%20Dataset). We perform a split manner of genres datasets, which contains 45,503 training images and 19,492 testing images
 
