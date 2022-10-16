@@ -9,10 +9,12 @@ we propose a novel hybrid vision-transformer-based encoder-decoder framework, na
 </div>
 
 ## 1. Requirements
-PyTorch >= 1.9.0;
+PyTorch >= 1.10.1;
 python >= 3.7;
-CUDA >= 11.2;
+CUDA >= 11.3;
 torchvision;
+
+NOTE: The code was tested to work well on Linux with torch 1.7, 1.9 and Win10 with torch 1.10.1. However, there is potential "Inplace Operation Error" bug if you use PyTorch < 1.10, which is quiet subtle and not fixed. If you found why the bug occur, pls let me know.
 
 ## 2. Data preparation
 
