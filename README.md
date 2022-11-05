@@ -21,15 +21,13 @@ NOTE: The code was tested to work well on Linux with torch 1.7, 1.9 and Win10 wi
 ### Scenery
 Scenery consists of about 6,000 images, and we randomly select 1,000 images for evaluation. The training and test dataset can be down [here](https://github.com/z-x-yang/NS-Outpainting)
 
-Meanwhile, we also provide the Scenery dataset that we have split here [baidu_pan](https://pan.baidu.com/s/1ynCfMa_HyzVYzSTBOVssVw?pwd=xyxe).
+Meanwhile, we also provide the Scenery dataset that we have split here [baidu_pan](https://pan.baidu.com/s/1qubvlWvx7jRfaR_WNyjtXw?pwd=qotr).
 
 ### Building
 Building contains about 16,000 images in the training set and 1,500 images in the testing set, which can be found in [here](https://github.com/PengleiGao/UTransformer)
 
 ### WikiArt
 The WikiArt datasets can be downloaded [here](https://github.com/cs-chan/ArtGAN/tree/master/WikiArt%20Dataset). We perform a split manner of genres datasets, which contains 45,503 training images and 19,492 testing images
-
-
 
 ## 3. Training and evaluation
 Before you reimplement our results, you need to download the ViT pretrain checkpoint [here](https://dl.fbaipublicfiles.com/mae/pretrain/mae_pretrain_vit_base.pth), and then initialize the encoder weight.
