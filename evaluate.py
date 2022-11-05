@@ -78,3 +78,11 @@ if __name__=='__main__':
     imgs = torch.from_numpy(imgs).cuda()
     iscore = inception_score(imgs, cuda=True, batch_size=32, resize=True, splits=1)[0]
     print('IS score', iscore)
+    
+    from skimage.metrics import peak_signal_noise_ratio
+    psnr=[]
+    for f in os.listdir(gtdir):
+        im_gt=np.array(Image.open(os.path.join(gtdir, f)).convert('RGB'))
+        im_pred=np.array(Image.open(os.path.join(generatedir, f)).convert('RGB'))
+        psnr.append(peak_signal_noise_ratio(im_gt,im_pred,data_range=255))
+    print('psnr:',np.mean(psnr))
