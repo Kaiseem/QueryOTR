@@ -21,7 +21,7 @@ NOTE: The code was tested to work well on Linux with torch 1.7, 1.9 and Win10 wi
 ### Scenery
 Scenery consists of about 6,000 images, and we randomly select 1,000 images for evaluation. The training and test dataset can be down [here](https://github.com/z-x-yang/NS-Outpainting)
 
-Meanwhile, we also provide the Scenery dataset that we have split here [baidu_pan](https://pan.baidu.com/s/1qubvlWvx7jRfaR_WNyjtXw?pwd=qotr).
+Meanwhile, we also provide the Scenery dataset that we have split here [baidu_pan](https://pan.baidu.com/s/1Zn5X3jfqr6x3ho705VMHZA?pwd=qotr).
 
 ### Building
 Building contains about 16,000 images in the training set and 1,500 images in the testing set, which can be found in [here](https://github.com/PengleiGao/UTransformer)
