@@ -16,6 +16,10 @@ torchvision;
 
 NOTE: The code was tested to work well on Linux with torch 1.7, 1.9 and Win10 with torch 1.10.1. However, there is potential "Inplace Operation Error" bug if you use PyTorch < 1.10, which is quiet subtle and not fixed. If you found why the bug occur, pls let me know.
 
+## News:
+\[2022/11/7\] We update the code. We found the [official MAE](https://github.com/facebookresearch/mae) code may degrade the performance by somehow (about 0.5-1 in terms of FID) and we go back to [unofficial MAE](https://github.com/pengzhiliang/MAE-pytorch). Meanwhile, we upload a trained checkpoints on Scenery [google drive](https://drive.google.com/drive/folders/1s_Qs6m314a5vwLzdQ58uKOveK6fZjgaB?usp=share_link) which can reach FID 20.38, IS 3.959, PSNR 22.4.
+
+
 ## 2. Data preparation
 
 ### Scenery
@@ -30,7 +34,7 @@ Building contains about 16,000 images in the training set and 1,500 images in th
 The WikiArt datasets can be downloaded [here](https://github.com/cs-chan/ArtGAN/tree/master/WikiArt%20Dataset). We perform a split manner of genres datasets, which contains 45,503 training images and 19,492 testing images
 
 ## 3. Training and evaluation
-Before you reimplement our results, you need to download the ViT pretrain checkpoint [here](https://dl.fbaipublicfiles.com/mae/pretrain/mae_pretrain_vit_base.pth), and then initialize the encoder weight.
+Before you reimplement our results, you need to download the ViT pretrain checkpoint [here](https://drive.google.com/drive/folders/1ZVzOD-ZGPBNtJ4HtsR-8IIH7Cm40LiMW?usp=share_link), and then initialize the encoder weight.
 
 
 Training on your datasets, run:
@@ -48,7 +52,7 @@ CUDA_VISIBLE_DEVICES=<GPUs> python evaluate.py --r=EXPERIMENT_NAME --data_root=Y
 
 ## Acknowledgements
 
-Our codes are built upon [MAE](https://github.com/facebookresearch/mae), [pytroch-fid](https://github.com/mseitzer/pytorch-fid) and [inception score](https://github.com/sbarratt/inception-score-pytorch)
+Our codes are built upon MAE, [pytroch-fid](https://github.com/mseitzer/pytorch-fid) and [inception score](https://github.com/sbarratt/inception-score-pytorch)
 
 ## Citation
 
