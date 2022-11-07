@@ -28,7 +28,8 @@ class TransGen(nn.Module):
 
         # initialize the weight of encoder using pretrain checkpoint
 
-        self.transformer_encoder = vit_base_patch16(pretrain=True,  init_ckpt=enc_ckpt_path, img_size=self.input_size)
+        self.transformer_encoder = vit_base_patch16(pretrained=True, img_size=224, init_ckpt=enc_ckpt_path)
+        #vit_base_patch16(pretrain=True,  init_ckpt=enc_ckpt_path, img_size=self.input_size)
 
         self.enc_image_size=224
 
@@ -58,10 +59,19 @@ class TransGen(nn.Module):
         if type(samples) is not dict:
             samples={'input':samples, 'gt_inner':F.pad(samples,(32,32,32,32))}
         x = samples['input']
-
+        
         gt_inner = samples['gt_inner']
 
-        src = self.transformer_encoder.forward_features(x)#self.encoder_forward(x)
+        b,c,w,h=x.size()
+
+        assert w==128 and h==128
+        padded_x = F.pad(x, (48, 48, 48, 48), mode='reflect')
+        vit_mask = torch.ones(size=(14, 14)).long()
+        vit_mask[3:-3, 3:-3] = 0
+
+        vit_mask = vit_mask.view(-1).expand(b, -1).contiguous().bool()
+
+        src = self.transformer_encoder.forward_features(padded_x, vit_mask)  # b n c
 
         query_embed=self.qem(src)
 
