@@ -82,7 +82,7 @@ if __name__=='__main__':
     from skimage.metrics import peak_signal_noise_ratio
     psnr=[]
     for f in os.listdir(gtdir):
-        im_gt=np.array(Image.open(os.path.join(gtdir, f)).convert('RGB'))
-        im_pred=np.array(Image.open(os.path.join(generatedir, f)).convert('RGB'))
+        im_gt = np.array(Image.open(os.path.join(gtdir, f)).convert('YCbCr'))[:,:,0]
+        im_pred = np.array(Image.open(os.path.join(generatedir, f)).convert('YCbCr'))[:,:,0]
         psnr.append(peak_signal_noise_ratio(im_gt,im_pred,data_range=255))
     print('psnr:',np.mean(psnr))
