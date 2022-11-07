@@ -17,7 +17,7 @@ torchvision;
 NOTE: The code was tested to work well on Linux with torch 1.7, 1.9 and Win10 with torch 1.10.1. However, there is potential "Inplace Operation Error" bug if you use PyTorch < 1.10, which is quiet subtle and not fixed. If you found why the bug occur, pls let me know.
 
 ## News:
-\[2022/11/7\] We update the code. We found the [official MAE](https://github.com/facebookresearch/mae) code may degrade the performance by somehow (about 0.5-1 in terms of FID) and we go back to [unofficial MAE](https://github.com/pengzhiliang/MAE-pytorch). Meanwhile, we upload a trained checkpoints on Scenery [google drive](https://drive.google.com/drive/folders/1s_Qs6m314a5vwLzdQ58uKOveK6fZjgaB?usp=share_link) which can reach FID 20.38, IS 3.959. It worth noting that the result may change due to the randomness of the code, e.g., one of the input of QEM is noise.
+\[2022/11/7\] We update the code. We found the [official MAE](https://github.com/facebookresearch/mae) code may degrade the performance by unkonwn reason (about 0.5-1 in terms of FID), and we go back to [unofficial MAE](https://github.com/pengzhiliang/MAE-pytorch). Meanwhile, we upload a trained checkpoints on Scenery [google drive](https://drive.google.com/drive/folders/1s_Qs6m314a5vwLzdQ58uKOveK6fZjgaB?usp=share_link) which can reach FID 20.38, IS 3.959. It worth noting that the result may change due to the randomness of the code, e.g., one of the input of QEM is noise.
 
 
 ## 2. Data preparation
